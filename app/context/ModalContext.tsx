@@ -23,3 +23,4 @@ export function ModalProvider({ children, setActiveModal }: { children: React.Re
     </ModalContext.Provider>
   );
 }
+

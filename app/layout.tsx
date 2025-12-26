@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 
 import {
@@ -19,6 +19,9 @@ import {
   Users,
   Truck,
   ClipboardList,
+  Settings as SettingsIcon,
+  UserCog,
+  ShieldCheck,
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
@@ -29,14 +32,10 @@ import { NavItem } from './components/NavItem';
 import { Modals } from './components/Modals';
 import { ModalProvider } from './context/ModalContext';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const montserrat = Montserrat({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ['300', '400', '500', '700'], 
+  display: 'swap',
 });
 
 
@@ -134,7 +133,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${montserrat.className} antialiased`}
       >
         <ModalProvider setActiveModal={setActiveModal}>
           <div className="flex min-h-screen bg-[#0d1117] text-[#c9d1d9] font-sans selection:bg-[#2f81f7]/30">
@@ -181,6 +180,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
                 <p className="px-4 text-[10px] font-bold text-[#484f58] uppercase tracking-[0.2em] mt-6 mb-2">Accounting</p>
                 <NavItem href="/pages/reports" icon={ClipboardList} label="Performance Data" setIsSidebarOpen={setIsSidebarOpen} />
+
+                <p className="px-4 text-[10px] font-bold text-[#484f58] uppercase tracking-[0.2em] mt-6 mb-2">Administration</p>
+                <NavItem href="/pages/system-settings" icon={SettingsIcon} label="System Settings" setIsSidebarOpen={setIsSidebarOpen} />
+                <NavItem href="/pages/user-management" icon={UserCog} label="User Management" setIsSidebarOpen={setIsSidebarOpen} />
+                <NavItem href="/pages/role-management" icon={ShieldCheck} label="Role Management" setIsSidebarOpen={setIsSidebarOpen} />
               </nav>
 
               <div className="mt-auto">
@@ -192,7 +196,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <p className="text-xs font-bold text-white truncate">Manager Ops</p>
                     <p className="text-[10px] text-[#8b949e] uppercase">Admin Tier 1</p>
                   </div>
-                  <Settings size={16} className="text-[#484f58] cursor-pointer hover:text-white transition-colors" />
+                  <SettingsIcon size={16} className="text-[#484f58] cursor-pointer hover:text-white transition-colors" />
                 </div>
               </div>
             </aside>
