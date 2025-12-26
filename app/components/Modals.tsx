@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   X,
   CheckCircle2,
@@ -40,13 +40,27 @@ export function Modals({
   calculatedPrice,
   handleAddTransaction,
 }: ModalsProps) {
+  const [showModalContent, setShowModalContent] = useState(false);
+
+  useEffect(() => {
+    if (activeModal) {
+      const timer = setTimeout(() => {
+        setShowModalContent(true);
+      }, 100); // 100ms delay
+      return () => clearTimeout(timer);
+    } else {
+      setShowModalContent(false);
+    }
+  }, [activeModal]);
+
   return (
     <>
       {activeModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
           <div className="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300 animate-in fade-in" onClick={() => setActiveModal(null)} />
-          <div className="bg-[#161b22] border border-[#30363d] w-full max-w-lg rounded-3xl shadow-2xl relative z-10 animate-in zoom-in-95 slide-in-from-bottom-4 duration-200 overflow-hidden">
-             <div className="p-6 border-b border-[#30363d] flex items-center justify-between bg-[#1c2128]">
+          {showModalContent && (
+            <div className="bg-[#161b22] border border-[#30363d] w-full max-w-lg rounded-3xl shadow-2xl relative z-10 animate-in zoom-in-95 slide-in-from-bottom-4 duration-200 overflow-hidden">
+               <div className="p-6 border-b border-[#30363d] flex items-center justify-between bg-[#1c2128]">
                 <div>
                   <h3 className="text-xl font-bold text-white">
                     {activeModal === 'sale' ? 'Record Sales Outbound' : 
@@ -132,7 +146,8 @@ export function Modals({
                   {activeModal === 'purchase' ? 'Post Purchase' : 'Process Transaction'}
                 </button>
              </div>
-          </div>
+            </div>
+          )}
         </div>
       )}
     </>

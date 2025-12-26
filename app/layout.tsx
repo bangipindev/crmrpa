@@ -167,24 +167,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
               <nav className="flex flex-col gap-1.5 flex-1 overflow-y-auto no-scrollbar">
                 <p className="px-4 text-[10px] font-bold text-[#484f58] uppercase tracking-[0.2em] mt-2 mb-2">Analytics</p>
-                <NavItem href="/pages/dashboard" icon={LayoutDashboard} label="Overview" setIsSidebarOpen={setIsSidebarOpen} />
+                <NavItem href="/admin/dashboard" icon={LayoutDashboard} label="Overview" setIsSidebarOpen={setIsSidebarOpen} />
                 
                 <p className="px-4 text-[10px] font-bold text-[#484f58] uppercase tracking-[0.2em] mt-6 mb-2">Operations</p>
-                <NavItem href="/pages/products" icon={Package} label="Inventory Control" setIsSidebarOpen={setIsSidebarOpen} />
-                <NavItem href="/pages/transactions" icon={History} label="Logistics History" setIsSidebarOpen={setIsSidebarOpen} />
-                <NavItem href="/pages/adjustments" icon={RefreshCw} label="Stock Adjustments" setIsSidebarOpen={setIsSidebarOpen} />
+                <NavItem href="/admin/products" icon={Package} label="Inventory Control" setIsSidebarOpen={setIsSidebarOpen} />
+                <NavItem href="/admin/transactions" icon={History} label="Logistics History" setIsSidebarOpen={setIsSidebarOpen} />
+                <NavItem href="/admin/adjustments" icon={RefreshCw} label="Stock Adjustments" setIsSidebarOpen={setIsSidebarOpen} />
                 
                 <p className="px-4 text-[10px] font-bold text-[#484f58] uppercase tracking-[0.2em] mt-6 mb-2">Relationships</p>
-                <NavItem href="/pages/customers" icon={Users} label="Customer Base" setIsSidebarOpen={setIsSidebarOpen} />
-                <NavItem href="/pages/suppliers" icon={Truck} label="Supply Chain" setIsSidebarOpen={setIsSidebarOpen} />
+                <NavItem href="/admin/customers" icon={Users} label="Customer Base" setIsSidebarOpen={setIsSidebarOpen} />
+                <NavItem href="/admin/suppliers" icon={Truck} label="Supply Chain" setIsSidebarOpen={setIsSidebarOpen} />
 
                 <p className="px-4 text-[10px] font-bold text-[#484f58] uppercase tracking-[0.2em] mt-6 mb-2">Accounting</p>
-                <NavItem href="/pages/reports" icon={ClipboardList} label="Performance Data" setIsSidebarOpen={setIsSidebarOpen} />
+                <NavItem href="/admin/reports" icon={ClipboardList} label="Performance Data" setIsSidebarOpen={setIsSidebarOpen} />
 
                 <p className="px-4 text-[10px] font-bold text-[#484f58] uppercase tracking-[0.2em] mt-6 mb-2">Administration</p>
-                <NavItem href="/pages/system-settings" icon={SettingsIcon} label="System Settings" setIsSidebarOpen={setIsSidebarOpen} />
-                <NavItem href="/pages/user-management" icon={UserCog} label="User Management" setIsSidebarOpen={setIsSidebarOpen} />
-                <NavItem href="/pages/role-management" icon={ShieldCheck} label="Role Management" setIsSidebarOpen={setIsSidebarOpen} />
+                <NavItem href="/admin/system-settings" icon={SettingsIcon} label="System Settings" setIsSidebarOpen={setIsSidebarOpen} />
+                <NavItem href="/admin/user-management" icon={UserCog} label="User Management" setIsSidebarOpen={setIsSidebarOpen} />
+                <NavItem href="/admin/role-management" icon={ShieldCheck} label="Role Management" setIsSidebarOpen={setIsSidebarOpen} />
               </nav>
 
               <div className="mt-auto">
