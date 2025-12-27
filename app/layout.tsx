@@ -35,6 +35,7 @@ import { SideLayout } from './components/SideLayout';
 import { TopLayout } from './components/TopLayout';
 import { ModalProvider } from './context/ModalContext';
 import { LayoutProvider, useLayout } from './context/LayoutContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -210,11 +211,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${montserrat.className} antialiased`}
       >
-        <LayoutProvider>
-          <LayoutContent>
-            {children}
-          </LayoutContent>
-        </LayoutProvider>
+        <ThemeProvider>
+          <LayoutProvider>
+            <LayoutContent>
+              {children}
+            </LayoutContent>
+          </LayoutProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

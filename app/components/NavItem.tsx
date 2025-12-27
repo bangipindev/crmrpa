@@ -20,7 +20,7 @@ export function NavItem({ href, icon: Icon, label, setIsSidebarOpen }: NavItemPr
       className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
         isActive
           ? 'bg-[#2f81f7] text-white shadow-lg shadow-[#2f81f7]/20 font-bold' 
-          : 'text-[#8b949e] hover:bg-[#1f2937] hover:text-[#c9d1d9]'
+          : 'text-[#8b949e] dark:text-[#8b949e] text-gray-600 hover:bg-[#1f2937] dark:hover:bg-[#1f2937] hover:bg-gray-100 hover:text-[#c9d1d9] dark:hover:text-[#c9d1d9] hover:text-gray-900'
       }`}
     >
       <Icon size={20} />

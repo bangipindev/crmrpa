@@ -24,7 +24,7 @@ interface LayoutProviderProps {
 }
 
 export function LayoutProvider({ children }: LayoutProviderProps) {
-  const [layoutPreference, setLayoutPreference] = useState<LayoutPreference>('side');
+  const [layoutPreference, setLayoutPreference] = useState<LayoutPreference>('top');
 
   useEffect(() => {
     // Load preference from localStorage
