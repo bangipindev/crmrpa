@@ -1,45 +1,29 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import {
   X,
   CheckCircle2,
 } from 'lucide-react';
-import { Product, Customer, Supplier, Transaction } from '../types';
+import { useModal } from '../context/ModalContext';
+import { useData } from '../context/DataContext';
+import { usePOS } from '../context/POSContext';
 
-interface ModalsProps {
-  activeModal: 'sale' | 'purchase' | 'adjustment' | 'product' | null;
-  setActiveModal: (modal: 'sale' | 'purchase' | 'adjustment' | 'product' | null) => void;
-  products: Product[];
-  customers: Customer[];
-  suppliers: Supplier[];
-  selectedCustId: string;
-  setSelectedCustId: (id: string) => void;
-  selectedProdId: string;
-  setSelectedProdId: (id: string) => void;
-  trxQty: number;
-  setTrxQty: (qty: number) => void;
-  currentProduct: Product | undefined;
-  currentCustomer: Customer | undefined;
-  calculatedPrice: number;
-  handleAddTransaction: () => void;
-}
-
-export function Modals({
-  activeModal,
-  setActiveModal,
-  products,
-  customers,
-  suppliers,
-  selectedCustId,
-  setSelectedCustId,
-  selectedProdId,
-  setSelectedProdId,
-  trxQty,
-  setTrxQty,
-  currentProduct,
-  currentCustomer,
-  calculatedPrice,
-  handleAddTransaction,
-}: ModalsProps) {
+export function Modals() {
+  const { activeModal, setActiveModal } = useModal();
+  const { products, customers, suppliers } = useData();
+  const {
+    selectedCustId,
+    setSelectedCustId,
+    selectedProdId,
+    setSelectedProdId,
+    trxQty,
+    setTrxQty,
+    currentProduct,
+    currentCustomer,
+    calculatedPrice,
+    handleAddTransaction,
+  } = usePOS();
   const [showModalContent, setShowModalContent] = useState(false);
 
   useEffect(() => {

@@ -20,86 +20,24 @@ import {
   Sun,
   X,
 } from 'lucide-react';
-import { usePathname } from 'next/navigation';
-
-import { Product, Customer, Supplier, Transaction, Adjustment } from '../types';
-import { INITIAL_PRODUCTS, INITIAL_CUSTOMERS, INITIAL_SUPPLIERS, INITIAL_TRANSACTIONS } from '../mockData';
 
 import { NavItem } from './NavItem';
 import { Modals } from './Modals';
 import { TopNavigation } from './TopNavigation';
 import { useLayout } from '../context/LayoutContext';
 import { useTheme } from '../context/ThemeContext';
+import { useUIState } from '../context/UIStateContext';
+import { useStats } from '../hooks/useStats';
 
 interface TopLayoutProps {
   children: React.ReactNode;
-  products: Product[];
-  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
-  customers: Customer[];
-  suppliers: Supplier[];
-  transactions: Transaction[];
-  setTransactions: React.Dispatch<React.SetStateAction<Transaction[]>>;
-  adjustments: Adjustment[];
-  setAdjustments: React.Dispatch<React.SetStateAction<Adjustment[]>>;
-  isSidebarOpen: boolean;
-  setIsSidebarOpen: (isOpen: boolean) => void;
-  activeModal: 'sale' | 'purchase' | 'adjustment' | 'product' | null;
-  setActiveModal: (modal: 'sale' | 'purchase' | 'adjustment' | 'product' | null) => void;
-  searchQuery: string;
-  setSearchQuery: (query: string) => void;
-  selectedCustId: string;
-  setSelectedCustId: (id: string) => void;
-  selectedProdId: string;
-  setSelectedProdId: (id: string) => void;
-  trxQty: number;
-  setTrxQty: (qty: number) => void;
-  currentProduct: Product | undefined;
-  currentCustomer: Customer | undefined;
-  calculatedPrice: number;
-  handleAddTransaction: () => void;
-  stats: {
-    totalStock: number;
-    lowStockCount: number;
-    overStockCount: number;
-    dailySales: number;
-    mtdSales: number;
-    mtdPurchases: number;
-    lowStockItems: Product[];
-    overStockItems: Product[];
-    profit: number;
-  };
 }
 
-export function TopLayout({
-  children,
-  products,
-  setProducts,
-  customers,
-  suppliers,
-  transactions,
-  setTransactions,
-  adjustments,
-  setAdjustments,
-  isSidebarOpen,
-  setIsSidebarOpen,
-  activeModal,
-  setActiveModal,
-  searchQuery,
-  setSearchQuery,
-  selectedCustId,
-  setSelectedCustId,
-  selectedProdId,
-  setSelectedProdId,
-  trxQty,
-  setTrxQty,
-  currentProduct,
-  currentCustomer,
-  calculatedPrice,
-  handleAddTransaction,
-  stats,
-}: TopLayoutProps) {
+export function TopLayout({ children }: TopLayoutProps) {
   const { layoutPreference, setLayoutPreference } = useLayout();
   const { theme, toggleTheme } = useTheme();
+  const { isSidebarOpen, setIsSidebarOpen, searchQuery, setSearchQuery } = useUIState();
+  const stats = useStats();
 
   return (
     <div className="flex flex-col min-h-screen bg-[#0d1117] dark:bg-[#0d1117] bg-gray-50 text-[#c9d1d9] dark:text-[#c9d1d9] text-gray-900 font-sans selection:bg-[#2f81f7]/30">
@@ -223,23 +161,7 @@ export function TopLayout({
       </main>
 
       {/* Dynamic Modals */}
-      <Modals 
-        activeModal={activeModal}
-        setActiveModal={setActiveModal}
-        products={products}
-        customers={customers}
-        suppliers={suppliers}
-        selectedCustId={selectedCustId}
-        setSelectedCustId={setSelectedCustId}
-        selectedProdId={selectedProdId}
-        setSelectedProdId={setSelectedProdId}
-        trxQty={trxQty}
-        setTrxQty={setTrxQty}
-        currentProduct={currentProduct}
-        currentCustomer={currentCustomer}
-        calculatedPrice={calculatedPrice}
-        handleAddTransaction={handleAddTransaction}
-      />
+      <Modals />
     </div>
   );
 }

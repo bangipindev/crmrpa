@@ -1,8 +1,9 @@
 "use client";
 
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface ModalContextType {
+  activeModal: 'sale' | 'purchase' | 'adjustment' | 'product' | null;
   setActiveModal: (modal: 'sale' | 'purchase' | 'adjustment' | 'product' | null) => void;
 }
 
@@ -16,9 +17,11 @@ export function useModal() {
   return context;
 }
 
-export function ModalProvider({ children, setActiveModal }: { children: React.ReactNode; setActiveModal: (modal: 'sale' | 'purchase' | 'adjustment' | 'product' | null) => void; }) {
+export function ModalProvider({ children }: { children: ReactNode }) {
+  const [activeModal, setActiveModal] = useState<'sale' | 'purchase' | 'adjustment' | 'product' | null>(null);
+
   return (
-    <ModalContext.Provider value={{ setActiveModal }}>
+    <ModalContext.Provider value={{ activeModal, setActiveModal }}>
       {children}
     </ModalContext.Provider>
   );
