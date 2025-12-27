@@ -1,38 +1,16 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 
-import {
-  ShoppingCart,
-  Search,
-  AlertTriangle,
-  Menu,
-  Settings,
-  X,
-  LayoutDashboard,
-  Package,
-  History,
-  RefreshCw,
-  Users,
-  Truck,
-  ClipboardList,
-  Settings as SettingsIcon,
-  UserCog,
-  ShieldCheck,
-} from 'lucide-react';
-import { usePathname } from 'next/navigation';
 
 import { Product, Customer, Supplier, Transaction, Adjustment } from './types';
 import { INITIAL_PRODUCTS, INITIAL_CUSTOMERS, INITIAL_SUPPLIERS, INITIAL_TRANSACTIONS } from './mockData';
 
-import { NavItem } from './components/NavItem';
-import { Modals } from './components/Modals';
-import { TopNavigation } from './components/TopNavigation';
 import { SideLayout } from './components/SideLayout';
 import { TopLayout } from './components/TopLayout';
+import { DynamicTitle } from './components/DynamicTitle';
 import { ModalProvider } from './context/ModalContext';
 import { LayoutProvider, useLayout } from './context/LayoutContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -140,6 +118,7 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
 
   return (
     <ModalProvider setActiveModal={setActiveModal}>
+      <DynamicTitle />
       {layoutPreference === 'side' ? (
         <SideLayout 
           products={products}
@@ -208,6 +187,10 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <title>RPA PRO - Intelligence</title>
+        <meta name="description" content="RPA PRO Intelligence - Advanced Business Management System" />
+      </head>
       <body
         className={`${montserrat.className} antialiased`}
       >
