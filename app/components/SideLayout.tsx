@@ -59,6 +59,7 @@ export function SideLayout({ children }: SideLayoutProps) {
               <ShoppingCart className="text-white" size={22} strokeWidth={2.5} />
             </div>
             <div>
+                            
               <h1 className="font-black text-white dark:text-white text-gray-900 tracking-tight text-lg leading-none">RPA PRO</h1>
               <p className="text-[10px] text-[#8b949e] dark:text-[#8b949e] text-gray-500 uppercase tracking-[0.2em] mt-1">Intelligence</p>
             </div>
