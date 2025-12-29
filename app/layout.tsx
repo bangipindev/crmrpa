@@ -1,8 +1,8 @@
 "use client";
 
 import React from 'react';
-import type { Metadata } from 'next'
 import { Montserrat } from "next/font/google";
+import 'tabulator-tables/dist/css/tabulator_site_dark.min.css';
 import "./globals.css";
 
 import { SideLayout } from './components/SideLayout';
@@ -21,11 +21,6 @@ const montserrat = Montserrat({
   display: 'swap',
 });
 
-// export const metadata: Metadata = {
-//   title: 'Ekspedisi App',
-//   description: 'Created with Next.js',
-//   generator: 'Next ',
-// }
 
 function LayoutContent({ children }: { children: React.ReactNode }) {
   const { layoutPreference } = useLayout();

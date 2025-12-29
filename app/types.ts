@@ -1,4 +1,4 @@
-type View = 'dashboard' | 'products' | 'customers' | 'suppliers' | 'transactions' | 'reports' | 'adjustments';
+type View = 'dashboard' | 'products' | 'customers' | 'suppliers' | 'transactions' | 'reports' | 'adjustments' | 'users' | 'roles';
 
 interface Product {
   id: string;
@@ -60,5 +60,12 @@ interface Adjustment {
   user: string;
 }
 
-export type { View, Product, Customer, Supplier, TransactionItem, Transaction, Adjustment };
+interface Users {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+}
+
+export type { View, Product, Customer, Supplier, TransactionItem, Transaction, Adjustment , Users};
 

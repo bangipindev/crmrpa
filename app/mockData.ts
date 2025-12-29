@@ -24,5 +24,28 @@ const INITIAL_TRANSACTIONS: Transaction[] = [
   { id: 'TRX-923', date: '2023-10-25 11:15', type: 'Sale', entityName: 'PT Food Nusantara', total: 12500000, items: [], status: 'Completed' },
 ];
 
+// Dummy data for users
+export const users = [
+  { id: '1', name: "John Doe", email: "john.doe@example.com", role: "Admin" },
+  { id: '2', name: "Jane Smith", email: "jane.smith@example.com", role: "Editor" },
+  { id: '3', name: "Alice Johnson", email: "alice.johnson@example.com", role: "Viewer" },
+];
+
+// Dummy data for roles
+export const roles = [
+  { id: '1', name: "Admin", description: "Full access to all features." },
+  { id: '2', name: "Editor", description: "Can edit content but has limited administrative privileges." },
+  { id: '3', name: "Viewer", description: "Can view content but cannot make changes." },
+  { id: '4', name: "Admin", description: "Full access to all features." },
+  { id: '5', name: "Editor", description: "Can edit content but has limited administrative privileges." },
+  { id: '6', name: "Viewer", description: "Can view content but cannot make changes." },
+  { id: '7', name: "Admin", description: "Full access to all features." },
+  { id: '8', name: "Editor", description: "Can edit content but has limited administrative privileges." },
+  { id: '9', name: "Viewer", description: "Can view content but cannot make changes." },
+  { id: '10', name: "Admin", description: "Full access to all features." },
+  { id: '11', name: "Editor", description: "Can edit content but has limited administrative privileges." },
+  { id: '12', name: "Viewer", description: "Can view content but cannot make changes." },
+];
+
 export { INITIAL_PRODUCTS, INITIAL_CUSTOMERS, INITIAL_SUPPLIERS, INITIAL_TRANSACTIONS };
 
